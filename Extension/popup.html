@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SaveReason</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="header">
+      <span class="logo"><img src="logo/icon48.png" alt="" class="popup-logo-img">SaveReason</span>
+      <span class="tagline">Save what matters. Remember why.</span>
+    </div>
+
+    <div class="page-info" id="pageInfo">
+      <div class="info-row">
+        <span class="info-label">PAGE</span>
+        <div class="page-title" id="pageTitle">Loading…</div>
+      </div>
+      <div class="info-row">
+        <span class="info-label">LINK</span>
+        <div class="page-url" id="pageUrl"></div>
+      </div>
+    </div>
+
+    <div class="selected-text-box" id="selectedTextBox">
+      <div class="selected-label">Selected text</div>
+      <div class="selected-value" id="selectedTextDisplay">No text selected</div>
+    </div>
+
+    <div class="section-label">Why are you saving this?</div>
+
+    <div class="reasons" id="reasons">
+      <button class="reason" data-reason="Project idea">Project idea</button>
+      <button class="reason" data-reason="Learn later">Learn later</button>
+      <button class="reason" data-reason="Reference">Reference</button>
+      <button class="reason" data-reason="Important">Important</button>
+    </div>
+
+    <textarea
+      id="customReason"
+      placeholder="Or write your own reason…"
+    ></textarea>
+
+    <button id="saveButton" class="save-btn">Save Memory</button>
+
+    <div id="status" class="status"></div>
+
+  </div>
+
+  <script src="popup.js"></script>
+
+</body>
+</html>

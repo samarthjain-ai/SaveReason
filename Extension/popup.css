@@ -1,0 +1,205 @@
+/* ============================================================
+   SaveReason Extension Popup
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --accent:  #2563eb;
+  --accent-h:#1d4ed8;
+  --bg:      #ffffff;
+  --surface: #f8fafc;
+  --border:  #e2e8f0;
+  --text:    #0f172a;
+  --muted:   #64748b;
+  --radius:  8px;
+  --success: #16a34a;
+  --error:   #dc2626;
+}
+
+body {
+  width: 340px;
+  font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-size: 13px;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.container { padding: 16px; }
+
+/* ── Header ── */
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.logo    { font-size: 16px; font-weight: 800; letter-spacing: -.4px; display: flex; align-items: center; gap: 6px; }
+.popup-logo-img { width: 22px; height: 22px; object-fit: contain; border-radius: 4px; flex-shrink: 0; }
+.tagline { font-size: 11px; color: var(--muted); }
+
+/* ── Page info ── */
+.page-info {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.info-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.info-label {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .6px;
+  color: var(--accent);
+  text-transform: uppercase;
+  flex-shrink: 0;
+  width: 28px;
+}
+.page-title {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+.page-url {
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+/* ── Selected text box ── */
+.selected-text-box {
+  background: #f0f7ff;
+  border: 1.5px solid #bfdbfe;
+  border-radius: var(--radius);
+  padding: 8px 11px;
+  margin-bottom: 10px;
+}
+.selected-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: var(--accent);
+  margin-bottom: 3px;
+}
+.selected-value {
+  font-size: 11px;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.4;
+  word-break: break-word;
+}
+.selected-value.has-text {
+  color: var(--text);
+  font-style: normal;
+}
+
+/* ── Section label ── */
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+/* ── Reason buttons ── */
+.reasons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.reason {
+  padding: 8px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  cursor: pointer;
+  color: var(--text);
+  text-align: center;
+  transition: border-color .12s, background .12s, color .12s;
+}
+.reason:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: #eff6ff;
+}
+.reason.selected {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ── Custom reason ── */
+textarea {
+  width: 100%;
+  height: 58px;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-family: inherit;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  resize: none;
+  outline: none;
+  transition: border-color .12s;
+  color: var(--text);
+  background: var(--bg);
+}
+textarea:focus { border-color: var(--accent); }
+textarea::placeholder { color: var(--muted); }
+
+/* ── Save button ── */
+.save-btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  transition: background .12s, transform .08s;
+}
+.save-btn:hover   { background: var(--accent-h); }
+.save-btn:active  { transform: scale(.98); }
+.save-btn:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ── Status ── */
+.status {
+  min-height: 22px;
+  margin-top: 8px;
+  font-size: 12px;
+  text-align: center;
+  color: var(--muted);
+  transition: color .15s;
+}
+.status.success { color: var(--success); font-weight: 600; }
+.status.error   { color: var(--error); }
+.status.loading { color: var(--muted); }
